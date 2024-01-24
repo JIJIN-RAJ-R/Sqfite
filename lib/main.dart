@@ -1,5 +1,6 @@
 // main.dart
 import 'package:flutter/material.dart';
+import 'package:tester/menu.dart';
 import 'sql_helper.dart';
 
 void main() {
@@ -201,7 +202,7 @@ class _HomePageState extends State<HomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const HomePage(),
+                  builder: (context) => const MenuPage(),
                 ),
               );
             },
