@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
 
-class MenuPage extends StatelessWidget {
-  const MenuPage({super.key});
+class MenuPage extends StatefulWidget {
+  final String title;
+  final String description;
+  final double price;
+  final String imageUrl;
 
+  const MenuPage({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.price,
+    required this.imageUrl,
+  });
+
+  @override
+  State<MenuPage> createState() => _MenuPageState();
+}
+
+class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: SingleChildScrollView(
-        
         child: Align(
           alignment: Alignment.center,
           child: Column(
@@ -18,120 +32,159 @@ class MenuPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(
-                          Icons.home,
+                    Row(
+                      children: [
+                        IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: const Icon(
+                              Icons.home,
+                              size: 30,
+                            )),
+                        const Icon(
+                          Icons.search,
                           size: 30,
-                        )),
-                    const Icon(
-                      Icons.search,
-                      size: 30,
+                        ),
+                      ],
                     ),
-                    
                     const Text(
                       'COMMON PROJECTS',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
                     ),
-                    
-                    const Row( 
+                    const Row(
                       children: [
                         Text(
                           '2',
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
-                          Icon(
-                      Icons.checkroom_sharp,
-                      size: 30,
-                    ),
+                        Icon(
+                          Icons.checkroom_sharp,
+                          size: 30,
+                        ),
                       ],
                     ),
-                   
                   ],
                 ),
               ),
-              const SingleChildScrollView(
+
+              SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-            
                 child: Row(
-                  
                   children: [
-                    Image(
-                      image: NetworkImage(
-                          'https://sothebys-com.brightspotcdn.com/ba/63/5448ec3a43ad881557d41485631d/972sneakers-cfk7z-t3-01-1.jpg'),
-                      height: 300,
-                      width: 400,
+                    Image.network(
+                      widget.imageUrl,
+                      height: 200,
+                      width: 200,
                     ),
-                    Image(
-                      image: NetworkImage(
-                          'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1691697272-image.png?crop=1xw:1.00xh;center,top&resize=980:*'),
-                      height: 300,
-                      width: 400,
-                    ),
-                    Image(
-                      image: NetworkImage(
-                          'https://crepdogcrew.com/cdn/shop/files/AirJordan1RetroHighOGSPNEXTCHAPTER_600x.png?v=1683613375'),
-                      height: 300,
-                      width: 400,
-                    ),
+
+                    // const  Image(
+                    //     image: NetworkImage(
+                    //         'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1691697272-image.png?crop=1xw:1.00xh;center,top&resize=980:*'),
+                    //     height: 300,
+                    //     width: 400,
+                    //   ),
+                    // const   Image(
+                    //     image: NetworkImage(
+                    //         'https://crepdogcrew.com/cdn/shop/files/AirJordan1RetroHighOGSPNEXTCHAPTER_600x.png?v=1683613375'),
+                    //     height: 300,
+                    //     width: 400,
+                    //   ),
                   ],
                 ),
               ),
               const Padding(
                 padding: EdgeInsets.only(left: 180, top: 10, bottom: 20),
+                child: Center(
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.circle_outlined,
+                        size: 12,
+                        color: Colors.grey,
+                      ),
+                      Icon(
+                        Icons.circle_outlined,
+                        size: 12,
+                        color: Colors.grey,
+                      ),
+                      Icon(
+                        Icons.circle_outlined,
+                        size: 15,
+                      ),
+                      Icon(
+                        Icons.circle_outlined,
+                        size: 12,
+                        color: Colors.grey,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Text(
+                widget.title,
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 8,
+                ),
+                child: Text(
+                  widget.description,
+                  style: const TextStyle(
+                      fontSize: 15,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 30, top: 8),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      Icons.circle_outlined,
-                      size: 12,
-                      color: Colors.grey,
+                    const Text(
+                      '\$',
+                      style: TextStyle(color: Colors.blue, fontSize: 22),
                     ),
-                    Icon(
-                      Icons.circle_outlined,
-                      size: 12,
-                      color: Colors.grey,
-                    ),
-                    Icon(
-                      Icons.circle_outlined,
-                      size: 15,
-                    ),
-                    Icon(
-                      Icons.circle_outlined,
-                      size: 12,
-                      color: Colors.grey,
+                    Text(
+                      widget.price.toString(),
+                      style: const TextStyle(fontSize: 16),
                     ),
                   ],
                 ),
               ),
-              const Text(
-                'COMMON PROJECTS',
-                style: TextStyle(fontWeight: FontWeight.w700),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(
-                  top: 8,
-                ),
-                child: Text(
-                  'Original Achilles Leather Sneakers',
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.w500),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(bottom: 30, top: 8),
-                child: Text('\$450',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                    )),
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 18),
-                    child: Container(
+              Center(
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Container(
+                        width: 170,
+                        height: 60,
+                        decoration:
+                            BoxDecoration(border: Border.all(width: 1.5)),
+                        child: const Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'COLOR: WHITE',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w700, fontSize: 16),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Container(
                       width: 190,
                       height: 60,
                       decoration: BoxDecoration(border: Border.all(width: 1.5)),
@@ -149,36 +202,18 @@ class MenuPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    width: 190,
-                    height: 60,
-                    decoration: BoxDecoration(border: Border.all(width: 1.5)),
-                    child: const Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'COLOR: WHITE',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700, fontSize: 16),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 20, left: 18),
+                    padding: const EdgeInsets.only(
+                      top: 20,
+                      left: 10,
+                    ),
                     child: Container(
-                      width: 390,
+                      width: 370,
                       height: 60,
                       decoration: BoxDecoration(
                           border: Border.all(width: 2), color: Colors.black),
@@ -197,9 +232,13 @@ class MenuPage extends StatelessWidget {
                             SizedBox(
                               width: 10,
                             ),
-                            Text('\$410',
+                            Text('\$',
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 15))
+                                    color: Colors.white, fontSize: 15)),
+                            Text(
+                              '899',
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ],
                         ),
                       ),
