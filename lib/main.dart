@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:tester/menu.dart'; // Assuming you have a menu.dart file
-import 'sql_helper.dart';
+import 'controller/sql_helper.dart';
 
 void main() {
   runApp(const MyApp());
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
       isScrollControlled: true,
       builder: (_) => SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only( 
+          padding: const EdgeInsets.only(
             bottom: 450,
             left: 10,
             right: 10,
@@ -157,7 +157,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(
                     width: 30,
-
                   ),
                   ElevatedButton(
                     onPressed: () {
@@ -168,14 +167,14 @@ class _HomePageState extends State<HomePage> {
                       'Clear',
                       style: TextStyle(color: Colors.red),
                     ),
-
                   ),
-                  const SizedBox(height: 10,)
+                  const SizedBox(
+                    height: 10,
+                  )
                 ],
               )
             ],
           ),
-        
         ),
       ),
     );
@@ -205,7 +204,7 @@ class _HomePageState extends State<HomePage> {
   void _deleteItem(int id) async {
     await SQLHelper.deleteItem(id);
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text('Successfully deleted a journal!'),
+      content: Text('Successfully deleted !!!'),
     ));
     _refreshJournals();
   }
@@ -280,7 +279,7 @@ class _HomePageState extends State<HomePage> {
                 crossAxisCount: 2,
                 crossAxisSpacing: 8.0,
                 mainAxisSpacing: 10.0,
-                childAspectRatio: 16 / 18,
+                childAspectRatio: 16 / 19,
               ),
               itemCount: _journals.length,
               itemBuilder: (context, index) => Card(
@@ -321,11 +320,17 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                                 Row(
+                                
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Text(_journals[index]['description']),
-                                    Row(
+                                    Flexible(child: Text(_journals[index]['description'])),
+                                    
+                                    
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         const Text(
                                           '\$',
@@ -342,9 +347,7 @@ class _HomePageState extends State<HomePage> {
                                           ),
                                         ),
                                       ],
-                                    )
-                                  ],
-                                ),
+                                    ),
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,

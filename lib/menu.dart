@@ -78,19 +78,6 @@ class _MenuPageState extends State<MenuPage> {
                       height: 200,
                       width: 200,
                     ),
-
-                    // const  Image(
-                    //     image: NetworkImage(
-                    //         'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1691697272-image.png?crop=1xw:1.00xh;center,top&resize=980:*'),
-                    //     height: 300,
-                    //     width: 400,
-                    //   ),
-                    // const   Image(
-                    //     image: NetworkImage(
-                    //         'https://crepdogcrew.com/cdn/shop/files/AirJordan1RetroHighOGSPNEXTCHAPTER_600x.png?v=1683613375'),
-                    //     height: 300,
-                    //     width: 400,
-                    //   ),
                   ],
                 ),
               ),
