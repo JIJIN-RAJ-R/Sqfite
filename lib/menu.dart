@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tester/view/textwidget.dart';
 
 class MenuPage extends StatefulWidget {
   final String title;
@@ -48,11 +49,7 @@ class _MenuPageState extends State<MenuPage> {
                         ),
                       ],
                     ),
-                    const Text(
-                      'COMMON PROJECTS',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
-                    ),
+                    commontxt(),
                     const Row(
                       children: [
                         Text(
